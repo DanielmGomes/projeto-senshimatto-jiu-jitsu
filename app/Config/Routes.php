@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('HelloWord');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,7 +30,17 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'home::index'); // rota principal do site do site
+$routes->get('home', 'home::index'); // rota principal do site
+$routes->get('cadastro_atleta', 'atleta::cadastroAtleta'); // rota de cadastro dos atletas
+$routes->get('buscar_cidade', 'home::buscarCidade'); // rota para preencher o select cidade
+$routes->add('cadastro_administrador', 'administrador::cadastroAdministrador'); // rota de cadastro dos administradores de eventos
+
+//:any - signifca tanto texto como numero :num - somente numero 
+//$1 significa posicao, se tiver mais de um parametro colocar $1, $2
+//exemplo routes->add('detalhes/(:any)/(:num)', 'Produtos:detalhes/$1/$2');
+// metodo get posso acessar tanto pelo caminho ex. produtos/index como pela rota ex. shopping
+//metodo add posso acessar somente pela rota
 
 /**
  * --------------------------------------------------------------------

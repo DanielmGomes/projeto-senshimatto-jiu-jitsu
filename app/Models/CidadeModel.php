@@ -3,9 +3,9 @@
     use CodeIgniter\Model;
 
     class CidadeModel extends Model {
-        protected $table = 'cidades';
+        protected $table = 'cidade';
         protected $primaryKey = 'idCidade';
-        protected $allowedFields = ['nome', 'estado_idestado'];
+        protected $allowedFields = ['nome', 'uf', 'ibge'];
         protected $returnType = 'object';
     }
   

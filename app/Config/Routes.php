@@ -35,6 +35,9 @@ $routes->get('home', 'home::index'); // rota principal do site
 $routes->get('cadastro_atleta', 'atleta::cadastroAtleta'); // rota de cadastro dos atletas
 $routes->get('buscar_cidade', 'home::buscarCidade'); // rota para preencher o select cidade
 $routes->add('cadastro_administrador', 'administrador::cadastroAdministrador'); // rota de cadastro dos administradores de eventos
+$routes->get('admin', 'administrador::index');
+$routes->get('loginAdministrador', 'administrador::login'); // rota login administrador
+$routes->get('logoff', 'administrador::logoff');
 
 //:any - signifca tanto texto como numero :num - somente numero 
 //$1 significa posicao, se tiver mais de um parametro colocar $1, $2

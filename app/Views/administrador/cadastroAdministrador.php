@@ -9,8 +9,7 @@
 						<div class="tab-pane fade in active" id="competidor">
                           	<h3 class="head text-center">Cadastro Administrador de Eventos</h3>
 
-                            <strong><?php echo $mensagem; ?></strong>
-							<form class="form-horizontal form-label-left" method="post">
+							<form class="form-horizontal form-label-left" action="<?php echo site_url('administrador/inserir'); ?>" method="post">
 								<div class="row">
 									<div class="col-md-5 col-sm-6 col-xs-12 form-group">
 										<i class="fas fa-user"></i>
@@ -19,9 +18,19 @@
 									</div>
 									<div class="col-md-1"></div>
 									<div class="col-md-5 col-sm-6 col-xs-12 form-group">
-                                    <i class="fas fa-at"></i>
+                                    	<i class="fas fa-at"></i>
 										<label for="">E-mail</label>
 										<input type="email" class="form-control" name="email" maxlength="60" required="">
+										<?php
+											if(isset($_SESSION['duplicadoEmail'])):
+										?>
+										<div class="notification is-danger">
+											<span class="help-block" style="color: red;">ERRO: E-mail já cadastrado.</span>
+										</div>
+										<?php
+											endif;
+											unset($_SESSION['duplicadoEmail']);
+										?>
 									</div>
 								</div>
 
@@ -57,15 +66,14 @@
 									<div class="col-md-5 col-sm-6 col-xs-12 form-group has-feedback">
 										<i class="fas fa-map-marker-alt"></i>
 										<label>Estado</label>
-										<select class="form-control" name="estado" id="estado" required="">											
-										<option value="">Selecione o Estado</option>
-										<?php foreach ($estado as $estado) : ?>
-										<option value="<?php echo $estado->idEstado; ?>"><?php echo $estado->nome; ?></option>
-										<?php endforeach ?>
+										<select class="form-control" name="estado" id="estado" required="">
+											<option value="">Selecione o Estado</option>
+											<?php foreach ($estado as $estado) : ?>
+											<option value="<?php echo $estado->idEstado; ?>"><?php echo $estado->nome; ?></option>
+											<?php endforeach ?>
 										</select>										
 									</div>
 									<script>
-                                    /*
 										$("#estado").on("change",function(){
 											var idEstado = $("#estado").val();
 											$.ajax({
@@ -90,7 +98,6 @@
                                                 
 											});
 										});
-                                        */
 									</script>
 									<div class="col-md-1"></div>
 									<div class="col-md-5 col-sm-6 col-xs-12 form-group has-feedback">
@@ -99,12 +106,8 @@
                                         <!--
                                         <select class="form-control" name="cidade" id="cidade" style="display:none"></select>
                                         -->
-										<select class="form-control" name="cidade" id="cidade" required="">											
-										<option value="">Selecione a cidade</option>
-										<?php foreach ($cidade as $cidade) : ?>
-										<option value="<?php echo $cidade->idCidade; ?>"><?php echo $cidade->nome; ?></option>
-										<?php endforeach ?>
-										</select>	
+										<select class="form-control"
+										name="cidade" id="cidade" style="display:none" required=""></select>	
                                     </div>
 								</div>
 
@@ -114,14 +117,14 @@
 										<label for="">Usuario</label>
 										<input type="text" class="form-control" name="usuario" maxlength="60" >
 										<?php
-										if(isset($_SESSION['duplicado'])):
-											?>
-											<div class="notification is-danger">
-												<span class="help-block" style="color: red;">ERRO: Usuário já cadastrado.</span>
-											</div>
+											if(isset($_SESSION['duplicadoUsuario'])):
+										?>
+										<div class="notification is-danger">
+											<span class="help-block" style="color: red;">ERRO: usuario já cadastrado.</span>
+										</div>
 										<?php
-										endif;
-										unset($_SESSION['duplicado']);
+											endif;
+											unset($_SESSION['duplicadoUsuario']);
 										?>
 									</div>
 
@@ -155,14 +158,17 @@
 										<span class="fas fa-eye eye" id="showPassword"></span>
 
 									</div>
+
+
 								</div>
+
 
 								<div class="row">
 									<br>
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-											<input type="submit" class="btn btn-success" value="<?php echo $acao; ?>"; class="btn btn-block"/>
+											<input type="submit" class="btn btn-success" value="inserir"; class="btn btn-block"/>
 											<input type="reset" class="btn btn-danger" value="canccelar"/>
 										</div>
 									</div>

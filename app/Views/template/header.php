@@ -45,13 +45,21 @@
 						<ul class="menu"> <!-- Esse é o 1 nivel ou o nivel principal -->
 							<li><a href="#"><span>Cadastrar-se</span></a>       				
 								<ul class="submenu-1"> <!-- Esse é o 2 nivel ou o primeiro Drop Down -->
-            						<li><a href="<?php echo base_url('cadastro_atleta'); ?>">Atleta</a></li>
+            						<li><a href="<?php echo base_url(); ?>">Atleta</a></li>
             						<li><a href="#">Academia</a></li>
             						<li><a href="<?php echo base_url('cadastro_administrador'); ?>">Administrador</a></li>
         						</ul>
     						</li>  
 						</ul>
-						<li><a class="login" href="<?php echo site_url(); ?>"><span>Acessar Conta</span></a></li>  				
+						<ul class="menu"> <!-- Esse é o 1 nivel ou o nivel principal -->
+							<li><a href="#"><span>Acessar Conta</span></a>       				
+								<ul class="submenu-1"> <!-- Esse é o 2 nivel ou o primeiro Drop Down -->
+            						<li><a href="#">Atleta</a></li>
+            						<li><a href="#">Academia</a></li>
+            						<li><a href="<?php echo base_url('loginAdministrador'); ?>">Administrador</a></li>
+        						</ul>
+    						</li>  
+						</ul>					
 					</ul>
 				</div>
 			</nav>

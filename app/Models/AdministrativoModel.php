@@ -6,7 +6,7 @@
         protected $table = 'administrativo';
         protected $primaryKey = 'idAdministrativo';
         protected $allowedFields = ['cidade_idcidade', 'estado_idestado', 'nome', 
-        'email', 'telefone', 'whatsapp', 'senha', 'endereco', 'bairro', 'numeroCartao', 'nomeCartao', 'vencimentoCartao', 
+        'email', 'telefone', 'whatsapp', 'usuario', 'senha', 'endereco', 'bairro', 'numeroCartao', 'nomeCartao', 'vencimentoCartao', 
         'codigoCartao'];
         protected $returnType = 'object';
     }

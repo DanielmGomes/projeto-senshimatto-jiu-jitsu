@@ -9,7 +9,7 @@
 						<div class="tab-pane fade in active" id="competidor">
                           	<h3 class="head text-center">Cadastro de Atleta</h3>
 							  <strong><?php //echo $mensagem; ?></strong>
-							<form class="form-horizontal form-label-left" method="post">
+							<form class="form-horizontal form-label-left" action="<?php echo site_url('atleta/inserir'); ?>" method="post">
 								
 								<div class="row">
 									<div class="col-md-5 col-sm-6 col-xs-12 form-group">
@@ -76,8 +76,7 @@
 									<div class="col-md-5 col-sm-6 col-xs-12 form-group has-feedback">
 										<i class="fas fa-map-marker-alt"></i>
 										<label>Estado</label>
-										<select class="selectpicker form-control" data-show-subtext="true" 
-										data-live-search="true" name="estado" id="estado" required="">
+										<select class="form-control" name="estado" id="estado" required="">
 										<option>Selecione o Estado</option>
 										<?php foreach ($estado as $estado) : ?>
 										<option value="<?php echo $estado->idEstado; ?>"><?php echo $estado->nome; ?></option>
@@ -85,13 +84,13 @@
 										</select>										
 									</div>
 									<script>
-										/*
 										$("#estado").on("change",function(){
 											var idEstado = $("#estado").val();
 											$.ajax({
-												url: 'Home/buscarCidade',
+												url: 'atleta/buscarCidade',
 												type: 'POST',
 												data:{idEstado:idEstado},
+                                                
 												beforeSend: function(){
 													$("#cidade").css({'display':'block'});
 													$("#cidade").html("carregando....");
@@ -106,21 +105,15 @@
 													$("#cidade").css({'display':'block'});
 													$("#cidade").html("erro ao carregar cidades");
 												}
+                                                
 											});
 										});
-										*/
 									</script>
 									<div class="col-md-1"></div>
 									<div class="col-md-5 col-sm-6 col-xs-12 form-group has-feedback">
 										<i class="fas fa-map-marker-alt"></i>
 										<label>Cidade</label>
-										<select class="selectpicker form-control" data-show-subtext="true" 
-										data-live-search="true" name="cidade" id="cidade" required="">
-										<option>Selecione a cidade</option>
-										<?php foreach ($cidade as $cidade) : ?>
-										<option value="<?php echo $cidade->idCidade; ?>"><?php echo $cidade->nome; ?></option>
-										<?php endforeach ?>
-										</select>									
+										<select class="form-control" name="cidade" style="display:none" id="cidade" required=""></select>									
 									</div>
 								</div>
 
@@ -129,20 +122,45 @@
 									<i class="fas fa-dumbbell"></i>
 									<label for="">Academia</label>
 										<br>
-										<select class="selectpicker form-control" data-show-subtext="true" data-live-search="true" name="academia" required="">
+										<select class="form-control" name="academia" id="academia" required="">
 											<option value="">Selecione a Academia</option>
 											<?php foreach ($academia as $academia) : ?>
 											<option value="<?php echo $academia->idacademia; ?>"><?php echo $academia->nome; ?></option>
 											<?php endforeach ?>
 										</select>
 									</div>
-									
+									<script>
+										$("#academia").on("change",function(){
+											var idAcademia = $("#academia").val();
+											$.ajax({
+												url: 'atleta/buscarProfessor',
+												type: 'POST',
+												data:{idAcademia:idAcademia},
+                                                
+												beforeSend: function(){
+													$("#professor").css({'display':'block'});
+													$("#professor").html("carregando....");
+												},
+												success: function(data)
+												{
+													$("#professor").css({'display':'block'});
+													$("#professor").html(data);
+												},
+												error: function(data)
+												{
+													$("#professor").css({'display':'block'});
+													$("#professor").html("erro ao carregar professores");
+												}
+                                                
+											});
+										});
+									</script>
 									<div class="col-md-1"></div>
 									<div class="col-md-5 col-sm-6 col-xs-12 form-group">
 										<i class="fas fa-user"></i>
 										<label for="">Professor</label>
 										<br>
-										<select class="selectpicker form-control" data-show-subtext="true" data-live-search="true" name="professor" required="">
+										<select class="form-control" name="professor" id="professor" style="display:none" required="">
 											<option value="">Selecione a Academia</option>
 											<?php foreach ($professor as $professor) : ?>
 											<option value="<?php echo $professor->idprofessor; ?>"><?php echo $professor->nome; ?></option>

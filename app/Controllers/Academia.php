@@ -1,36 +1,11 @@
 <?php namespace App\Controllers;
 
-class Atleta extends BaseController{
+class Academia extends BaseController{
 
-	public function cadastroAtleta(){
-		
-        $data['acao'] = 'inserir';
-        $data['mensagem'] = '';
-
-        if($this->request->getMethod() == 'post'){
-            $atletaModel = new \App\Models\AtletaModel();
-            $testeModel->set('nome', $this->request->getPost('nome'));
-
-            if ($testeModel->insert()) {
-                //deu certo
-                $data['mensagem'] = 'sucesso';
-            }
-            else{
-                //deu errado
-                $data['mensagem'] = 'erro';
-            }
-        }
-
+	public function cadastroAcademia(){		
         $estadoModel = new \App\Models\EstadoModel();
-        $cidadeModel = new \App\Models\CidadeModel();
-        $academiaModel = new \App\Models\AcademiaModel();
-        $professorModel = new \App\Models\ProfessorModel();
-		$data['estado'] = $estadoModel->find();
-        $data['cidade'] = $cidadeModel->find();
-        $data['academia'] = $academiaModel->find();
-        $data['professor'] = $professorModel->find();
-
-		return view('atleta/cadastroAtleta', $data);
+        $data['estado'] = $estadoModel->find();
+		return view('academia/cadastroAcademia', $data);
 	}
 
     public function inserir(){

@@ -25,7 +25,6 @@ class Administrador extends BaseController
     {
         $administrativoModel = new \App\Models\AdministrativoModel();
         $estadoModel = new \App\Models\EstadoModel();
-        $cidadeModel = new \App\Models\CidadeModel();
 
         $data = array
         (

@@ -5,8 +5,8 @@
     class ProfessorModel extends Model {
         protected $table = 'professor';
         protected $primaryKey = 'idprofessor';
-        protected $allowedFields = ['cidade_idcidade', 'estado_idestado', 
-        'nome', 'endereco', 'bairro', 'cpf', 'rg', 'telefone', 'whatsapp', 'email', 'faixa'];
+        protected $allowedFields = ['academia_idacademia', 'cidade_idcidade', 'estado_idestado', 'nome', 
+        'endereco', 'bairro', 'cpf', 'rg', 'telefone', 'whatsapp', 'email', 'faixa'];
         protected $returnType = 'object';
     }
   

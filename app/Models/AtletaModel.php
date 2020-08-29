@@ -7,7 +7,7 @@
         protected $primaryKey = 'idatleta';
         protected $allowedFields = ['academia_idacademia', 'cidade_idcidade', 'estado_idestado', 
         'nome', 'nascimento', 'cpf', 'sexo', 'email', 'telefone', 'whatsapp', 'telefone', 'whatsapp', 
-        'senha', 'foto', 'peso', 'idade', 'endereco', 'bairro', 'faixa', 'numeroCartao', 'nomeCartao',
+        'usuario','senha', 'foto', 'peso', 'idade', 'endereco', 'bairro', 'faixa', 'numeroCartao', 'nomeCartao',
         'codigoCartao', 'vencimentoCartao'];
         protected $returnType = 'object';
     }

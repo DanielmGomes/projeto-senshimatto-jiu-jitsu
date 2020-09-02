@@ -40,6 +40,7 @@ $routes->get('loginAdministrador', 'administrador::login'); // rota login admini
 $routes->get('logoff', 'administrador::logoff');
 $routes->get('loginAtleta', 'atleta::login');
 $routes->get('cadastro_academia', 'academia::cadastroAcademia');
+$routes->get('cadastro_competicao', 'competicao::cadastroCompeticao');
 
 //:any - signifca tanto texto como numero :num - somente numero 
 //$1 significa posicao, se tiver mais de um parametro colocar $1, $2
